@@ -4,8 +4,10 @@
  */
 package login;
 
-import ClientReq.dashboard;
+import ClientReq.clientReq;
 import Database.Db;
+import Forgot_Password.emailCheck;
+
 import java.awt.*;
 import javax.swing.*;
 import java.sql.*;
@@ -37,32 +39,32 @@ ResultSet  rs = null;
     
     public void scaleImage(){
 //To scale Login Image
-        ImageIcon icon = new ImageIcon("C:\\pamela\\OneDrive\\Documents\\NetBeansProjects\\Pempro_Visual\\src\\login\\login1.jpg");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/login/login1.jpg"));
         Image img = icon.getImage();
         Image imgScale = img.getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(imgScale);
         jLabel1.setIcon(scaledIcon);
         
 //To scale user, password icon
-        ImageIcon user_icon = new ImageIcon("C:\\pamela\\OneDrive\\Documents\\NetBeansProjects\\Pempro_Visual\\src\\login\\user.png");
+        ImageIcon user_icon = new ImageIcon(getClass().getResource("/login/user.png"));
         Image user_img = user_icon.getImage();
         Image userScale = user_img.getScaledInstance(jLabel6.getWidth(), jLabel6.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledUser = new ImageIcon(userScale);
         jLabel6.setIcon(scaledUser);
         
-        ImageIcon lock_icon = new ImageIcon("C:\\pamela\\OneDrive\\Documents\\NetBeansProjects\\Pempro_Visual\\src\\login\\lock.png");
+        ImageIcon lock_icon = new ImageIcon(getClass().getResource("/login/lock.png"));
         Image lock_img = lock_icon.getImage();
         Image lockScale = lock_img.getScaledInstance(jLabel7.getWidth(), jLabel7.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledLock = new ImageIcon(lockScale);
         jLabel7.setIcon(scaledLock);
         
-        ImageIcon blind_icon = new ImageIcon("C:\\pamela\\OneDrive\\Documents\\NetBeansProjects\\Pempro_Visual\\src\\login\\blind.png");
+        ImageIcon blind_icon = new ImageIcon(getClass().getResource("/login/blind.png"));
         Image blind_img = blind_icon.getImage();
         Image blindScale = blind_img.getScaledInstance(jLabel8.getWidth(), jLabel8.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledBlind = new ImageIcon(blindScale);
         jLabel8.setIcon(scaledBlind);
         
-        ImageIcon see_icon = new ImageIcon("C:\\pamela\\OneDrive\\Documents\\NetBeansProjects\\Pempro_Visual\\src\\login\\see.png");
+        ImageIcon see_icon = new ImageIcon(getClass().getResource("/login/see.png"));
         Image see_img = see_icon.getImage();
         Image seeScale = see_img.getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon scaledSee = new ImageIcon(seeScale);
@@ -138,10 +140,10 @@ ResultSet  rs = null;
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 123, 36));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("LOGIN FORM");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(380, 202));
@@ -195,6 +197,9 @@ ResultSet  rs = null;
         jLabel5.setText("Forgot Password?");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel5MouseEntered(evt);
             }
@@ -226,9 +231,6 @@ ResultSet  rs = null;
         jLabel12.setForeground(new java.awt.Color(204, 0, 51));
         jLabel12.setText("* Password is required");
 
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText("Hello! Let's get started");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -257,11 +259,6 @@ ResultSet  rs = null;
                             .addComponent(jLabel2)
                             .addComponent(jLabel11))))
                 .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(85, 85, 85)
-                    .addComponent(jLabel10)
-                    .addContainerGap(86, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,14 +287,14 @@ ResultSet  rs = null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(110, 110, 110)
-                    .addComponent(jLabel10)
-                    .addContainerGap(110, Short.MAX_VALUE)))
         );
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 97, 290, 236));
+
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Hello! Let's get started");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 80, 150, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 0, 290, 472));
 
@@ -387,15 +384,15 @@ ResultSet  rs = null;
         // TODO add your handling code here:
         if (jTextField1.getText().equals("Masukan Username Anda") || jTextField1.getText().isEmpty()) {
             jLabel11.setVisible(true);
-            return;
         } else if (new String(jPasswordField1.getPassword()).equals("Masukan Password Anda") || jPasswordField1.getPassword().length == 0) {
             jLabel12.setVisible(true);
-        }
-        
-        String user = jTextField1.getText();
-        String pass = new String(jPasswordField1.getPassword());
+        } else if (!jTextField1.getText().equals("Masukan Username Anda") && !jTextField1.getText().isEmpty() 
+         && !new String(jPasswordField1.getPassword()).equals("Masukan Password Anda") && jPasswordField1.getPassword().length != 0){
+            String user = jTextField1.getText();
+            String pass = new String(jPasswordField1.getPassword());
     
-        Login(user, pass);
+            Login(user, pass);
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
@@ -419,6 +416,14 @@ ResultSet  rs = null;
         jLabel5.setCursor(Cursor.getDefaultCursor());
         jLabel5.setForeground(new Color(153,153,153));
     }//GEN-LAST:event_jLabel5MouseExited
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        emailCheck email_check = new emailCheck();
+        email_check.show();
+        
+        dispose();
+    }//GEN-LAST:event_jLabel5MouseClicked
     
     private void Login(String username, String password) {
         try {
@@ -433,7 +438,7 @@ ResultSet  rs = null;
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Welcome, "+ username+"!");
                 
-                dashboard dashObj = new dashboard();
+                clientReq dashObj = new clientReq();
                 dashObj.show();
                 
                 dispose();
