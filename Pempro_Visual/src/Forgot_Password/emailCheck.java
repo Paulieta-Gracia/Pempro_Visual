@@ -79,7 +79,7 @@ public class emailCheck extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jTextField1.setForeground(new java.awt.Color(153, 153, 153));
-        jTextField1.setText("Masukan Email Anda");
+        jTextField1.setText("example@gmail.com");
         jTextField1.setToolTipText("");
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true));
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -156,7 +156,7 @@ public class emailCheck extends javax.swing.JFrame {
 
     private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("Masukan Email Anda"))
+        if (jTextField1.getText().equals("example@gmail.com"))
         {
             jTextField1.setText("");
             jTextField1.setForeground(new Color(0,0,0));
@@ -167,7 +167,7 @@ public class emailCheck extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jTextField1.getText().equals(""))
         {
-            jTextField1.setText("Masukan Email Anda");
+            jTextField1.setText("example@gmail.com");
             jTextField1.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_jTextField1FocusLost
@@ -188,7 +188,7 @@ public class emailCheck extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        if (jTextField1.getText().equals("Masukan Email Anda") || jTextField1.getText().isEmpty()) {
+        if (jTextField1.getText().equals("example@gmail.com") || jTextField1.getText().isEmpty()) {
             jLabel5.setVisible(true);
             JOptionPane.showMessageDialog(null, "Mohon Masukan Email Anda!", "Access Denied", JOptionPane.ERROR_MESSAGE);
         } else {

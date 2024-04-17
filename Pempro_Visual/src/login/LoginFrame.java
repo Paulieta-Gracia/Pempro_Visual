@@ -4,7 +4,7 @@
  */
 package login;
 
-import ClientReq.clientReq;
+import Components.dataUser;
 import Database.Db;
 import Forgot_Password.emailCheck;
 
@@ -438,7 +438,7 @@ ResultSet  rs = null;
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Welcome, "+ username+"!");
                 
-                clientReq dashObj = new clientReq();
+                dataUser dashObj = new dataUser();
                 dashObj.show();
                 
                 dispose();
